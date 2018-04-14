@@ -24,6 +24,9 @@ local function MenuButton ()
     self.mousepressed = function (x, y, button)
     end
 
+    self.mousereleased = function (x, y, button)
+    end
+
     return self
 end
 

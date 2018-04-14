@@ -52,12 +52,12 @@ end
 
 -- Get the current window width:
 love2d.window_width = function ()
-    return love.window.getWidth()
+    return love.graphics.getWidth()
 end
 
 -- Get the current window height:
 love2d.window_height = function ()
-    return love.window.getHeight()
+    return love.graphics.getHeight()
 end
 
 -- Toggle between full screen and windowed:

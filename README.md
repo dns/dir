@@ -1,4 +1,11 @@
 
+# dir-swipe
+
+
+## Credits
+Carlos Beluki
+Nixola
+
 ## About
 
 dir is a small, elegant puzzle game written in Lua, using the excellent

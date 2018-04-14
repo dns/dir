@@ -728,11 +728,14 @@ function Grid (game)
 
         local x, y, tile = self.tile_at_point(mouse_x, mouse_y)
 
+        self.tile_pressed = {x = x, y = y, tile = tile}
+
         -- no tile or not movable:
         if tile == nil or tile.big then
             return
         end
 
+        --[[
         local direction = MOUSE_DIRECTIONS[button]
 
         -- unknown direction/mouse button:
@@ -749,6 +752,45 @@ function Grid (game)
 
         tile.animated = true
         self.start_moving(distance, direction)
+        --]]
+    end
+
+
+    self.mousereleased = function(mouse_x, mouse_y, button)
+        if self.tiles_animation then
+            return
+        end
+        local direction 
+        local x, y, tile = self.tile_at_point(mouse_x, mouse_y)
+
+        if x == self.tile_pressed.x then -- if it doesn't move horizontally
+            if y > self.tile_pressed.y then
+                direction = DIRECTIONS.DOWN
+            elseif y < self.tile_pressed.y then
+                direction = DIRECTIONS.UP
+            end
+        elseif y == self.tile_pressed.y then -- if it doesn't move vertically
+            if x > self.tile_pressed.x then
+                direction = DIRECTIONS.RIGHT
+            elseif x < self.tile_pressed.x then
+                direction = DIRECTIONS.LEFT
+            end
+        end
+
+        if not direction then
+            return
+        end
+
+        x, y, tile = self.tile_pressed.x, self.tile_pressed.y, self.tile_pressed.tile
+
+        local distance = self.tiles.count_nil_direction(x, y, direction)
+        -- don't move 0 tiles:
+        if distance == 0 then
+            return
+        end
+        tile.animated = true
+        self.start_moving(distance, direction)
+
     end
 
 

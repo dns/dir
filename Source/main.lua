@@ -23,5 +23,6 @@ function love.load ()
     love.resize = game.resize
     love.keypressed = game.keypressed
     love.mousepressed = game.mousepressed
+    love.mousereleased = game.mousereleased
 end
 

@@ -105,6 +105,15 @@ function Game ()
         end
     end
 
+
+    self.mousereleased = function(x, y, button)
+        local component = self.point_to_component(x, y)
+
+        if component ~= nil then
+            component.mousereleased(x, y, button)
+        end
+    end
+
     -- helpers:
 
     -- given a point in the window, determine which game component contains it:
