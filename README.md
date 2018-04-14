@@ -4,7 +4,9 @@
 
 ## Credits
 
-Carlos Beluki, Nixola.
+Carlos Beluki
+
+Nixola
 
 ## About
 
